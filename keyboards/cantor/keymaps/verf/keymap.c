@@ -22,33 +22,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
      * │Gui│ Z │ X │ C │ V │ B │   │ N │ M │ , │ . │ / │ ` │
      * ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-     * │   │   │   │Tab│Spc│MO1│   │MO2│Ent│Bsp│   │   │   │
+     * │   │   │   │Tab│Sp1│MO1│   │MO2│En2│Bsp│   │   │   │
      * └───┴───┴───┴───┴───┴───┘   └───┴───┴───┴───┴───┴───┘
      */
     [0] = LAYOUT_split_3x6_3(
         KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
-        CW_TOGG, KC_A, LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G,   KC_H,   RCTL_T(KC_J),    RSFT_T(KC_K), LALT_T(KC_L), KC_SCLN, KC_QUOT,
+        LCTL_T(CW_TOGG), KC_A, LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G,   KC_H,   RCTL_T(KC_J),    RSFT_T(KC_K), LALT_T(KC_L), KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
-                                   KC_TAB,  LT(1,KC_SPC),  MO(1),      KC_LGUI,   LT(2,KC_ENT),   KC_BSPC
+                                   KC_TAB,  LT(1,KC_SPC),  KC_LALT,      KC_LGUI,   LT(2,KC_ENT),   KC_BSPC
     ),
     /*
      * symbol
      *
      * ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-     * │   │Hom│PUp│ ↑ │PDn│ # │   │ - │ + │ [ │ ] │ \ │   │
+     * │   │LA1│LA2│LA3│LA4│   │   │ - │ + │ [ │ ] │ \ │   │
      * ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-     * │   │End│ ← │ ↓ │ → │ ! │   │ _ │ = │ ( │ ) │ | │   │
+     * │   │Hom│PDn│PUp│End│ ! │   │ _ │ = │ ( │ ) │ | │   │
      * ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-     * │   │   │CGL│CGR│ % │ * │   │ ^ │ $ │ { │ } │ & │   │
+     * │   │ ← │ ↓ │ ↑ │ → │ % │   │ ^ │ $ │ { │ } │ & │   │
      * ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-     * │   │   │   │   │BOT│TRS│   │   │ @ │   │   │   │   │
+     * │   │   │   │   │BOT│TRS│   │ * │ @ │ # │   │   │   │
      * └───┴───┴───┴───┴───┴───┘   └───┴───┴───┴───┴───┴───┘
      */
     [1] = LAYOUT_split_3x6_3(
-        KC_NO,  KC_HOME, KC_PGUP,      KC_UP,         KC_PGDN, KC_HASH,          KC_MINS, KC_PLUS, KC_LBRC, KC_RBRC, KC_BSLS, KC_NO,
-        KC_NO,  KC_END,  KC_LEFT,      KC_DOWN,       KC_RGHT, KC_EXLM,          KC_UNDS, KC_EQL,  KC_LPRN, KC_RPRN, KC_PIPE, KC_NO,
-        KC_NO,  KC_NO,   LCG(KC_LEFT), LCG(KC_RIGHT), KC_PERC, KC_ASTR,          KC_CIRC, KC_DLR,  KC_LCBR, KC_RCBR, KC_AMPR, KC_NO,
-                                  QK_BOOT,   KC_TRNS, KC_TRNS,          KC_NO,   KC_AT,   KC_NO
+        KC_NO, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_NO,    KC_MINS, KC_PLUS, KC_LBRC, KC_RBRC, KC_BSLS, KC_NO,
+        KC_NO, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_EXLM,               KC_UNDS, KC_EQL,  KC_LPRN, KC_RPRN, KC_PIPE, KC_NO,
+        KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_PERC,                KC_CIRC, KC_DLR,  KC_LCBR, KC_RCBR, KC_AMPR, KC_NO,
+                                 QK_BOOT, KC_TRNS, KC_TRNS,              KC_ASTR, KC_AT,   KC_HASH
     ),
     /*
      * 0-9 / F1-F12 / func
@@ -104,4 +104,16 @@ bool is_flow_tap_key(uint16_t keycode) {
             return true;
     }
     return false;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LCTL_T(CW_TOGG):
+            if (record->tap.count && record->event.pressed) {
+                caps_word_on();
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+    }
+    return true;
 }
