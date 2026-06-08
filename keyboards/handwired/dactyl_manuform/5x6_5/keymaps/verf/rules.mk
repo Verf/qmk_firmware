@@ -1,0 +1,3 @@
+CAPS_WORD_ENABLE = yes
+CHORDAL_HOLD = yes
+FLOW_TAP_TERM = yes
