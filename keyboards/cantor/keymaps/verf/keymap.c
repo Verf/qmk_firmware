@@ -19,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,          KC_Q, KC_W,         KC_E,         KC_R,         KC_T,          /* */ KC_Y,         KC_U,         KC_I,         KC_O,         KC_P,    KC_DEL,
         LCTL_T(CW_TOGG), KC_A, LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G,          /* */ KC_H,         RCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), KC_SCLN, KC_QUOT,
         KC_LSFT,         KC_Z, KC_X,         KC_C,         KC_V,         KC_B,          /* */ KC_N,         KC_M,         KC_COMM,      KC_DOT,       KC_SLSH, KC_GRV,
-                                             KC_SPC,       LT(1,KC_TAB), LT(3,KC_UNDS), /* */ LT(4,KC_EQL), LT(2,KC_ENT), KC_BSPC
+                                             KC_SPC,       LT(1,KC_TAB), LT(3,KC_F13), /* */ LT(4,KC_EQL), LT(2,KC_ENT), KC_BSPC
     ),
     /*
      * SYM
@@ -84,9 +84,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case LCTL_T(CW_TOGG):
             if (record->tap.count && record->event.pressed) {
                 caps_word_on();
-                return false;        // Return false to ignore further processing of key
+                return false;
             }
-            break;
+        case KC_F24:
+            if (record->event.pressed) {
+                register_code16(KC_UNDS);
+            } else {
+                unregister_code16(KC_UNDS);
+            }
+            return false;
+        default:
+            return true;
     }
-    return true;
 }
