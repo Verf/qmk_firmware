@@ -22,12 +22,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * BASE
      */
     [0] = LAYOUT_5x6_5(
-        KC_NO,           KC_1,    KC_2,         KC_3,         KC_4,          KC_5,  /* */  KC_6,  KC_7,         KC_8,         KC_9,         KC_0,   KC_DEL,
-        KC_ESC,          KC_Q,    KC_W,         KC_E,         KC_R,          KC_T,  /* */  KC_Y,  KC_U,         KC_I,         KC_O,         KC_P,   KC_BSLS,
+        KC_ESC,          KC_1,    KC_2,         KC_3,         KC_4,          KC_5,  /* */  KC_6,  KC_7,         KC_8,         KC_9,         KC_0,   KC_DEL,
+        KC_NO,           KC_Q,    KC_W,         KC_E,         KC_R,          KC_T,  /* */  KC_Y,  KC_U,         KC_I,         KC_O,         KC_P,   KC_BSLS,
         LCTL_T(CW_TOGG), KC_A,    LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F),  KC_G,  /* */  KC_H,  RCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), KC_SCLN, KC_QUOT,
         KC_LSFT,         KC_Z,    KC_X,         KC_C,         KC_V,          KC_B,  /* */  KC_N,  KC_M,         KC_COMM,      KC_DOT,       KC_SLSH, KC_GRV,
-                         KC_LGUI, KC_LALT,      KC_SPC,       KC_NO,         KC_NO, /* */  KC_NO, KC_NO,        KC_BSPC,      KC_NO,        KC_NO,
-                                                       LT(1,KC_TAB), LT(3,KC_F13), /* */  LT(4,KC_EQL), LT(2,KC_ENT)
+                         KC_NO, KC_NO,      KC_SPC,       KC_NO,       LT(3,KC_F20), /* */  LT(4,KC_EQL), KC_NO,        KC_BSPC,      KC_NO,        KC_NO,
+                                                       LT(1,KC_TAB),  KC_NO, /* */  KC_NO, LT(2,KC_ENT)
     ),
     /*
      * SYM
@@ -35,8 +35,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT_5x6_5(
         KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS, /* */ KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_NO,   LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_NO,   /* */ KC_PLUS, KC_NO,   KC_LBRC, KC_RBRC, KC_NO,   KC_BSLS,
-        KC_NO,   KC_EXLM,    KC_AT,      KC_CIRC,    KC_DLR,     KC_PERC, /* */ KC_MINS, KC_COLN, KC_LPRN, KC_RPRN, KC_DQUO, KC_PIPE,
-        KC_NO,   KC_NO,      KC_NO,      KC_AMPR,    KC_HASH,    KC_ASTR, /* */ KC_LT,   KC_GT,   KC_LCBR, KC_RCBR, KC_QUES, KC_NO,
+        KC_NO,   KC_EXLM,    KC_AT,      KC_CIRC,    KC_DLR,     KC_PERC, /* */ KC_MINS, KC_H,    KC_LPRN, KC_RPRN, KC_DQUO, KC_PIPE,
+        KC_LGUI, KC_NO,      KC_NO,      KC_AMPR,    KC_HASH,    KC_ASTR, /* */ KC_LT,   KC_GT,   KC_LCBR, KC_RCBR, KC_QUES, KC_NO,
                  KC_NO,      KC_NO,      QK_BOOT,    QK_BOOT,    QK_BOOT, /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                                      KC_TRNS,    KC_TRNS, /* */ KC_TRNS, KC_TRNS
     ),
@@ -115,15 +115,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case LCTL_T(CW_TOGG):
             if (record->tap.count && record->event.pressed) {
                 caps_word_on();
-                return false;        // Return false to ignore further processing of key
+                return false;
             }
-        case KC_F13:
-            if (record->event.pressed) {
-                register_code16(KC_UNDS);
-            } else {
-                unregister_code16(KC_UNDS);
+        case LT(3,KC_F20):
+            if (record->tap.count > 0) {
+                // tap.count > 0 表示这是一次“轻触”操作
+                if (record->event.pressed) {
+                    register_code16(KC_UNDS); // 按下时发送下划线
+                } else {
+                    unregister_code16(KC_UNDS); // 释放时释放下划线
+                }
+                return false; // 返回 false，阻止默认的 KC_F24 触发
             }
-            return false;
+            // tap.count == 0 表示这是一次“长按”操作
+            // 返回 true，让 QMK 正常执行切到图层 3 的逻辑
+            return true;
         default:
             return true;
 

@@ -20,3 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define EE_HANDS
 
 #define KINETIC_SPEED
+
+// === Home Row Mod Optimization ===
+#define PERMISSIVE_HOLD
+#define CHORDAL_HOLD
+
+#define TAPPING_TERM 250
+#define FLOW_TAP_TERM 150
+
+// === Caps Word ===
+#define CAPS_WORD_IDLE_TIMEOUT 0
+#define CAPS_WORD_INVERT_ON_SHIFT
