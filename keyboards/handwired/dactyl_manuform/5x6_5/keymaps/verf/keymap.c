@@ -22,12 +22,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * BASE
      */
     [0] = LAYOUT_5x6_5(
-        KC_ESC,          KC_1,         KC_2,         KC_3,         KC_4,         KC_5,  /* */ KC_6,  KC_7,         KC_8,         KC_9,         KC_0,            KC_DEL,
-        KC_NO,           KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,  /* */ KC_Y,  KC_U,         KC_I,         KC_O,         KC_P,            KC_BSLS,
-        LCTL_T(CW_TOGG), LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G,  /* */ KC_H,  RCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RGUI_T(KC_SCLN), KC_QUOT,
-        KC_LSFT,         KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,  /* */ KC_N,  KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,         KC_GRV,
-                         KC_NO,        KC_NO,        KC_SPC,       KC_NO,        MO(3), /* */ MO(4), KC_NO,        KC_BSPC,      KC_NO,        KC_NO,
-                                                                   LT(1,KC_TAB), KC_NO, /* */ KC_NO, LT(2,KC_ENT)
+        KC_ESC,  KC_1,         KC_2,         KC_3,         KC_4,         KC_5,  /* */ KC_6,  KC_7,         KC_8,       KC_9,         KC_0,            KC_DEL,
+        KC_NO,   KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,  /* */ KC_Y,  KC_U,         KC_I,       KC_O,         KC_P,            KC_BSLS,
+        KC_TAB,  LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G,  /* */ KC_H,  RCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RGUI_T(KC_SCLN), KC_QUOT,
+        KC_LSFT, KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,  /* */ KC_N,  KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,         KC_GRV,
+                 KC_NO,        KC_NO,        KC_SPC,       KC_NO,        MO(3), /* */ MO(4), KC_NO,        KC_BSPC,      KC_NO,        KC_NO,
+                                                           MO(1),        KC_NO, /* */ KC_NO, LT(2,KC_ENT)
     ),
     /*
      * SYM
@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT_5x6_5(
         KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS, /* */ KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_NO,   /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_NO,   KC_BSLS,
-        KC_TRNS, KC_EXLM,    KC_AT,      KC_CIRC,    KC_DLR,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_DQUO, KC_PIPE,
+        CW_TOGG, KC_EXLM,    KC_AT,      KC_CIRC,    KC_DLR,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_DQUO, KC_PIPE,
         KC_TRNS, KC_NO,      KC_NO,      KC_AMPR,    KC_HASH,    KC_ASTR, /* */ KC_LT,   KC_GT,   KC_LCBR, KC_RCBR, KC_QUES, KC_NO,
                  KC_NO,      KC_NO,      KC_TRNS,    KC_TRNS,    QK_BOOT, /* */ KC_TRNS, KC_TRNS, KC_NO,   KC_NO,   KC_NO,
                                                      KC_TRNS,    KC_TRNS, /* */ KC_TRNS, KC_TRNS
@@ -85,6 +85,7 @@ bool caps_word_press_user(uint16_t keycode) {
 
         // Keycodes that continue Caps Word, without shifting.
         case KC_1 ... KC_0:
+        case KC_SPC:
         case KC_BSPC:
         case KC_MINS:
         case KC_UNDS:
@@ -101,6 +102,7 @@ bool is_flow_tap_key(uint16_t keycode) {
     }
     switch (get_tap_keycode(keycode)) {
         case KC_A ... KC_Z:
+        case KC_SPC:
         case KC_DOT:
         case KC_COMM:
         case KC_SCLN:
@@ -108,30 +110,4 @@ bool is_flow_tap_key(uint16_t keycode) {
             return true;
     }
     return false;
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LCTL_T(CW_TOGG):
-            if (record->tap.count && record->event.pressed) {
-                caps_word_on();
-                return false;
-            }
-        case LT(3,KC_F20):
-            if (record->tap.count > 0) {
-                // tap.count > 0 表示这是一次“轻触”操作
-                if (record->event.pressed) {
-                    register_code16(KC_UNDS); // 按下时发送下划线
-                } else {
-                    unregister_code16(KC_UNDS); // 释放时释放下划线
-                }
-                return false; // 返回 false，阻止默认的 KC_F24 触发
-            }
-            // tap.count == 0 表示这是一次“长按”操作
-            // 返回 true，让 QMK 正常执行切到图层 3 的逻辑
-            return true;
-        default:
-            return true;
-
-    }
 }
