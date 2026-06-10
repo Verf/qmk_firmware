@@ -34,8 +34,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT_5x6_5(
         KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS, /* */ KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_NO,   /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_NO,   KC_BSLS,
-        CW_TOGG, KC_EXLM,    KC_AT,      KC_CIRC,    KC_DLR,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_DQUO, KC_PIPE,
+        KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_NO,   /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_BSLS, KC_TRNS,
+        CW_TOGG, KC_EXLM,    KC_AT,      KC_CIRC,    KC_DLR,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_PIPE, KC_DQUO,
         KC_TRNS, KC_NO,      KC_NO,      KC_AMPR,    KC_HASH,    KC_ASTR, /* */ KC_LT,   KC_GT,   KC_LCBR, KC_RCBR, KC_QUES, KC_NO,
                  KC_NO,      KC_NO,      KC_TRNS,    KC_TRNS,    QK_BOOT, /* */ KC_TRNS, KC_TRNS, KC_NO,   KC_NO,   KC_NO,
                                                      KC_TRNS,    KC_TRNS, /* */ KC_TRNS, KC_TRNS
