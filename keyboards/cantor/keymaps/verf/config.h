@@ -4,9 +4,9 @@
 #pragma once
 
 #define PERMISSIVE_HOLD
-//#define CHORDAL_HOLD
+#define CHORDAL_HOLD
 
-#define TAPPING_TERM 175
+#define TAPPING_TERM 200
 #define FLOW_TAP_TERM 150
 
 #define CAPS_WORD_IDLE_TIMEOUT 0
