@@ -16,8 +16,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,    /* */ KC_Y,    KC_U,         KC_I,          KC_O,         KC_P,            KC_BSLS,
         CW_TOGG, LGUI_T(KC_A), LCTL_T(KC_S), LSFT_T(KC_D), LALT_T(KC_F), KC_G,    /* */ KC_H,    LALT_T(KC_J), RSFT_T(KC_K),  RCTL_T(KC_L), RGUI_T(KC_SCLN), KC_QUOT,
         KC_LSFT, KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,    /* */ KC_N,    KC_M,         KC_COMM,       KC_DOT,       KC_SLSH,         KC_GRV,
-                 KC_NO,        KC_NO,        LT(1,KC_SPC), KC_NO,        KC_LGUI, /* */ KC_RGUI, KC_NO,        LT(2,KC_BSPC), KC_NO,        KC_NO,
-                                                           LT(3,KC_TAB), KC_NO,   /* */ KC_NO,   LT(4,KC_ENT)
+                 KC_NO,        KC_NO,        LT(3,KC_SPC), KC_NO,        KC_LGUI, /* */ KC_RGUI, KC_NO,        LT(4,KC_BSPC), KC_NO,        KC_NO,
+                                                           LT(1,KC_TAB), KC_NO,   /* */ KC_NO,   LT(2,KC_ENT)
     ),
     /*
      * SYM
@@ -85,6 +85,8 @@ bool caps_word_press_user(uint16_t keycode) {
             return false;  // Deactivate Caps Word.
     }
 }
+
+
 
 const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
 combo_t key_combos[] = {
