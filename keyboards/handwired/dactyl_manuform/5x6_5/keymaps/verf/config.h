@@ -21,9 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define KINETIC_SPEED
 
-#define PERMISSIVE_HOLD
-
 #define TAPPING_TERM 175
-#define FLOW_TAP_TERM 125
+#define FLOW_TAP_TERM 150
 
 #define CAPS_WORD_IDLE_TIMEOUT 0
