@@ -3,10 +3,10 @@
 
 #pragma once
 
-#define PERMISSIVE_HOLD
 #define CHORDAL_HOLD
 
 #define TAPPING_TERM 200
-#define FLOW_TAP_TERM 150
+#define FLOW_TAP_TERM 200
+#define COMBO_TERM 75
 
 #define CAPS_WORD_IDLE_TIMEOUT 0
