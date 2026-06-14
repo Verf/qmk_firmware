@@ -33,13 +33,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_NO, KC_NO, KC_NO, /* */ QK_BOOT, KC_TRNS, KC_NO
     ),
     /*
-     * NAV
+     * NAV / FUNC
      */
     [3] = LAYOUT_split_3x6_3(
-        KC_TRNS, KC_NO, KC_PGUP, KC_UP,   KC_PGDN, KC_HOME, /* */ KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO, KC_DEL,
-        KC_NO,   KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  /* */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_NO, KC_NO,
-        KC_TRNS, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
-                                 KC_TRNS, KC_NO,   QK_BOOT, /* */ KC_LGUI,   KC_NO,   LCA(KC_DEL)
+        KC_TRNS, KC_NO, KC_PGUP, KC_UP,   KC_PGDN,    KC_HOME, /* */ KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO, KC_DEL,
+        KC_NO,   KC_NO, KC_LEFT, KC_DOWN, KC_RGHT,    KC_END,  /* */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_NO, KC_NO,
+        KC_TRNS, KC_NO, KC_NO,   KC_NO,   LGUI(KC_V), KC_NO,   /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
+                                 KC_TRNS, KC_NO,      QK_BOOT, /* */ KC_LGUI, KC_NO,   LCA(KC_DEL)
     ),
 };
 
