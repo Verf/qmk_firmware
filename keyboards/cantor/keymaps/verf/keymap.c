@@ -87,3 +87,8 @@ bool is_flow_tap_key(uint16_t keycode) {
     }
     return false;
 }
+
+const uint16_t PROGMEM ty_combo[] = {KC_T, KC_Y, COMBO_END}; // kj in Norman
+combo_t key_combos[] = {
+    COMBO(ty_combo, KC_ESC),
+};
