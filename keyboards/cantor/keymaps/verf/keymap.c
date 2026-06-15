@@ -12,7 +12,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_Q, KC_W,         KC_E,         KC_R,         KC_T,   /* */ KC_Y,    KC_U,         KC_I,         KC_O,         KC_P,    KC_BSLS,
         CW_TOGG, KC_A, LCTL_T(KC_S), LSFT_T(KC_D), LALT_T(KC_F), KC_G,   /* */ KC_H,    LALT_T(KC_J), RSFT_T(KC_K), RCTL_T(KC_L), KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z, KC_X,         KC_C,         KC_V,         KC_B,   /* */ KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH, KC_GRV,
-                                     MO(3),        LT(1,KC_SPC), KC_TAB, /* */ KC_LSFT, LT(2,KC_ENT), KC_BSPC
+                                     MO(3),        LT(1,KC_SPC), KC_TAB, /* */ KC_LGUI, LT(2,KC_ENT), KC_BSPC
     ),
     /*
      * SYM
@@ -21,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_AMPR, /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_NO,   KC_PIPE,
         KC_NO,   KC_EXLM,    KC_CIRC,    KC_AT,      KC_DLR,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_NO,   KC_DQUO,
         KC_TRNS, KC_NO,      KC_NO,      KC_NO,      KC_HASH,    KC_ASTR, /* */ KC_LT,   KC_GT,   KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
-                                         KC_NO,      KC_TRNS,    QK_BOOT, /* */ KC_LGUI,   KC_NO,   KC_NO
+                                         KC_NO,      KC_TRNS,    QK_BOOT, /* */ KC_NO,   KC_NO,   KC_NO
     ),
     /*
      * NUM
