@@ -3,8 +3,8 @@
 
 #pragma once
 
-#define TAPPING_TERM 250
-#define FLOW_TAP_TERM 200
+#define TAPPING_TERM 200
+#define FLOW_TAP_TERM 180
 
 #define PERMISSIVE_HOLD
 #define CHORDAL_HOLD

@@ -12,15 +12,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_Q, KC_W,         KC_E,         KC_R,         KC_T,   /* */ KC_Y,    KC_U,         KC_I,         KC_O,         KC_P,    KC_BSLS,
         CW_TOGG, KC_A, LCTL_T(KC_S), LSFT_T(KC_D), LALT_T(KC_F), KC_G,   /* */ KC_H,    LALT_T(KC_J), RSFT_T(KC_K), RCTL_T(KC_L), KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z, KC_X,         KC_C,         KC_V,         KC_B,   /* */ KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH, KC_GRV,
-                                     MO(1),        LT(3,KC_SPC), KC_TAB, /* */ KC_LGUI, LT(2,KC_ENT), KC_BSPC
+                                     KC_SPC,       MO(1),        LT(3,KC_TAB), /* */ KC_LGUI, LT(2,KC_ENT), KC_BSPC
     ),
     /*
      * SYM
      */
     [1] = LAYOUT_split_3x6_3(
-        KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_AMPR, /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_NO,   KC_PIPE,
+        KC_TRNS, LALT(KC_5), LALT(KC_6), LALT(KC_7), LALT(KC_8), KC_AMPR, /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_NO,   KC_PIPE,
         KC_NO,   KC_EXLM,    KC_CIRC,    KC_AT,      KC_DLR,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_NO,   KC_DQUO,
-        KC_TRNS, KC_NO,      KC_NO,      KC_NO,      KC_HASH,    KC_ASTR, /* */ KC_LT,   KC_GT,   KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
+        KC_TRNS, KC_NO,      LALT(KC_1), LALT(KC_2), KC_HASH,    KC_ASTR, /* */ KC_LT,   KC_GT,   KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
                                          KC_NO,      KC_TRNS,    QK_BOOT, /* */ KC_NO,   KC_NO,   KC_NO
     ),
     /*
@@ -89,6 +89,10 @@ bool is_flow_tap_key(uint16_t keycode) {
 }
 
 const uint16_t PROGMEM ty_combo[] = {KC_T, KC_Y, COMBO_END}; // kj in Norman
+const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END}; // et in Norman
 combo_t key_combos[] = {
     COMBO(ty_combo, KC_ESC),
+    COMBO(qw_combo, KC_ESC),
+    COMBO(df_combo, KC_TAB),
 };
