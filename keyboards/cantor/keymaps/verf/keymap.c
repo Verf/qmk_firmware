@@ -90,7 +90,7 @@ bool is_flow_tap_key(uint16_t keycode) {
 
 const uint16_t PROGMEM ty_combo[] = {KC_T, KC_Y, COMBO_END}; // kj in Norman
 const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END}; // et in Norman
+const uint16_t PROGMEM df_combo[] = {LSFT_T(KC_D), LALT_T(KC_F), COMBO_END}; // et in Norman
 combo_t key_combos[] = {
     COMBO(ty_combo, KC_ESC),
     COMBO(qw_combo, KC_ESC),
