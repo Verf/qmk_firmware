@@ -9,4 +9,4 @@
 
 #define CAPS_WORD_IDLE_TIMEOUT 0
 
-#define COMBO_TERM 70
+#define COMBO_TERM 30
