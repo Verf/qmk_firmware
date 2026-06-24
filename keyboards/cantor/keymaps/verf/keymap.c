@@ -4,7 +4,11 @@
 #include QMK_KEYBOARD_H
 
 enum custom_keycodes {
-    MY_MO1 = SAFE_RANGE,  // 替代 MO(1)，绕过 tap-hold 机制
+    MY_MO1  = SAFE_RANGE,   // 替代 MO(1)
+    MY_CTL,                 // 替代 OS_LCTL，直接激活 oneshot
+    MY_SFT,                 // 替代 OS_LSFT
+    MY_ALT,                 // 替代 OS_LALT
+    MY_GUI,                 // 替代 OS_LGUI
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -15,7 +19,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(1);
             }
-            return false;  // 阻止 QMK 对 keycode 的默认处理
+            return false;
+        case MY_CTL:
+            if (record->event.pressed) {
+                add_oneshot_mods(MOD_LCTL);
+            }
+            return false;
+        case MY_SFT:
+            if (record->event.pressed) {
+                add_oneshot_mods(MOD_LSFT);
+            }
+            return false;
+        case MY_ALT:
+            if (record->event.pressed) {
+                add_oneshot_mods(MOD_LALT);
+            }
+            return false;
+        case MY_GUI:
+            if (record->event.pressed) {
+                add_oneshot_mods(MOD_LGUI);
+            }
+            return false;
     }
     return true;
 }
@@ -35,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT_split_3x6_3(
         KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,    KC_AMPR, /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_COLN, KC_PIPE,
-        KC_LGUI, OS_LGUI, OS_LCTL, OS_LSFT, OS_LALT, KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_AMPR, KC_DQUO,
+        KC_LGUI, MY_GUI,  MY_CTL,  MY_SFT,  MY_ALT,  KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_AMPR, KC_DQUO,
         KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_ASTR, /* */ KC_CIRC, KC_DLR,  KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
                                    KC_TRNS, KC_TRNS, QK_BOOT, /* */ KC_TRNS, KC_TRNS, MO(3)
     ),
