@@ -51,27 +51,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT_split_3x6_3(
         KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_AMPR, /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_COLN, KC_PIPE,
-        KC_TRNS, MY_GUI,     MY_CTL,     MY_SFT,     MY_ALT,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_AMPR, KC_DQUO,
-        KC_TRNS, KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_ASTR, /* */ KC_CIRC, KC_DLR,  KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
+        KC_TRNS, MY_GUI,     MY_CTL,     MY_SFT,     MY_ALT,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_EXLM, KC_DQUO,
+        KC_TRNS, KC_NO,      KC_NO,      KC_AT,      KC_HASH,    KC_ASTR, /* */ KC_CIRC, KC_DLR,  KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
                                          KC_TRNS,    KC_TRNS,    QK_BOOT, /* */ KC_TRNS, MO(3),   KC_TRNS
     ),
     /*
      * NUM
      */
     [2] = LAYOUT_split_3x6_3(
-        KC_TRNS, KC_1,   KC_2,   KC_3,    KC_4,   KC_5,    /* */ KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_DEL,
-        KC_TRNS, MY_GUI, MY_CTL, MY_SFT,  MY_ALT, KC_ASTR, /* */ KC_MINS, KC_EQL,  KC_PLUS, KC_SLSH, KC_NO,  KC_NO,
-        KC_F1,   KC_F2,  KC_F3,  KC_F4,   KC_F5,  KC_F6,   /* */ KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, KC_F12,
-                                 KC_TRNS, MO(3),  KC_TRNS, /* */ KC_TRNS, KC_TRNS, KC_TRNS
+        KC_TRNS, KC_NO,  KC_NO,  LCTL(KC_D), KC_NO,  KC_NO,   /* */ KC_NO,   LCTL(KC_U), KC_NO, KC_NO,   KC_NO,  KC_NO,
+        KC_TRNS, MY_GUI, MY_CTL, MY_SFT,     MY_ALT, KC_HOME, /* */ KC_LEFT, KC_DOWN,    KC_UP, KC_RGHT, KC_END, KC_NO,
+        KC_TRNS, KC_NO,  KC_NO,  KC_NO,      KC_NO,  KC_NO,   /* */ MS_LEFT, MS_RGHT,    KC_NO, KC_NO,   KC_NO,  KC_NO,
+                                 KC_TRNS,    MO(3),  KC_TRNS, /* */ KC_TRNS, KC_TRNS,    KC_TRNS
     ),
     /*
      * NAV / FUNC
      */
     [3] = LAYOUT_split_3x6_3(
-        KC_NO, KC_NO,   KC_NO,   LCTL(KC_D), KC_NO,   KC_NO,   /* */ KC_NO,   LCTL(KC_U), KC_NO,  KC_NO,   KC_NO,  LCA(KC_DEL),
-        KC_NO, MY_GUI,  MY_CTL,  MY_SFT,     MY_ALT,  KC_HOME, /* */ KC_LEFT, KC_DOWN,    KC_UP,  KC_RGHT, KC_END, KC_NO,
-        KC_NO, KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   /* */ MS_LEFT, MS_RGHT,    KC_NO,  KC_NO,   KC_NO,  KC_NO,
-                                 KC_TRNS,    KC_TRNS, KC_TRNS, /* */ KC_TRNS, KC_TRNS,    KC_TRNS
+        KC_F1,   KC_F2, KC_F3, KC_F4,   KC_F5,   KC_F6,   /* */ KC_F7,   KC_F8,   KC_F9, KC_F10, KC_F11, KC_F12,
+        KC_TRNS, KC_1,  KC_2,  KC_3,    KC_4,    KC_5,    /* */ KC_6,    KC_7,    KC_8,  KC_9,   KC_0,   KC_DEL,
+        KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   /* */ KC_NO,   KC_NO,   KC_NO, KC_NO,  KC_NO,  KC_NO,
+                               KC_TRNS, KC_TRNS, KC_TRNS, /* */ KC_TRNS, KC_TRNS, KC_TRNS
     ),
 };
 
