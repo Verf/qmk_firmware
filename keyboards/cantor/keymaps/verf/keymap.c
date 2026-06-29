@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                          KC_TRNS,    KC_TRNS,    QK_BOOT, /* */ KC_TRNS, MO(3),   KC_TRNS
     ),
     /*
-     * NUM
+     * FUNC
      */
     [2] = LAYOUT_split_3x6_3(
         KC_TRNS, KC_NO,  KC_NO,  LCTL(KC_D), KC_NO,   KC_NO,   /* */ KC_NO,   LCTL(KC_U), KC_NO, KC_NO,   KC_NO,  LCA(KC_DEL),
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  KC_TRNS,    MO(3),   KC_TRNS, /* */ KC_TRNS, KC_TRNS,    KC_TRNS
     ),
     /*
-     * NAV / FUNC
+     * GAME
      */
     [3] = LAYOUT_split_3x6_3(
         KC_F1,   KC_F2, KC_F3, KC_F4,   KC_F5,   KC_F6,   /* */ KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
