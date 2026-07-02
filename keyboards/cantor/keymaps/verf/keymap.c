@@ -3,57 +3,24 @@
 
 #include QMK_KEYBOARD_H
 
-enum custom_keycodes {
-    MY_CTL  = SAFE_RANGE,   // 替代 OS_LCTL，直接激活 oneshot
-    MY_SFT,                 // 替代 OS_LSFT
-    MY_ALT,                 // 替代 OS_LALT
-    MY_GUI,                 // 替代 OS_LGUI
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MY_CTL:
-            if (record->event.pressed) {
-                add_oneshot_mods(MOD_LCTL);
-            }
-            return false;
-        case MY_SFT:
-            if (record->event.pressed) {
-                add_oneshot_mods(MOD_LSFT);
-            }
-            return false;
-        case MY_ALT:
-            if (record->event.pressed) {
-                add_oneshot_mods(MOD_LALT);
-            }
-            return false;
-        case MY_GUI:
-            if (record->event.pressed) {
-                add_oneshot_mods(MOD_LGUI);
-            }
-            return false;
-    }
-    return true;
-}
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * BASE (QWERTY)
      */
     [0] = LAYOUT_split_3x6_3(
-        KC_ESC,  KC_Q, KC_W, KC_D,    KC_F,         KC_K,   /* */  KC_J,    KC_U,         KC_R,    KC_L,   KC_SCLN, KC_BSLS,
-        CW_TOGG, KC_A, KC_S, KC_E,    KC_T,         KC_G,   /* */  KC_Y,    KC_N,         KC_I,    KC_O,   KC_H,    KC_QUOT,
-        KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,         KC_B,   /* */  KC_P,    KC_M,         KC_COMM, KC_DOT, KC_SLSH, KC_GRV,
-                             KC_TAB,  LT(3,KC_SPC), KC_LGUI, /* */ KC_LSFT, LT(4,KC_ENT), KC_BSPC
+        KC_ESC,  KC_Q, KC_W, KC_D,  KC_F,   KC_K,   /* */  KC_J,    KC_U,   KC_R,    KC_L,   KC_SCLN, KC_BSLS,
+        CW_TOGG, KC_A, KC_S, KC_E,  KC_T,   KC_G,   /* */  KC_Y,    KC_N,   KC_I,    KC_O,   KC_H,    KC_QUOT,
+        KC_LSFT, KC_Z, KC_X, KC_C,  KC_V,   KC_B,   /* */  KC_P,    KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_GRV,
+                             MO(3), KC_SPC, KC_LGUI, /* */ KC_LSFT, KC_ENT, MO(4)
     ),
     /*
      * BASE (Gallium)
      */
     [1] = LAYOUT_split_3x6_3(
-        KC_ESC,  KC_B, KC_L, KC_D,    KC_C,         KC_V,   /* */  KC_J,    KC_Y,         KC_O,    KC_U,    KC_SCLN, KC_BSLS,
-        CW_TOGG, KC_N, KC_R, KC_T,    KC_S,         KC_G,   /* */  KC_P,    KC_H,         KC_A,    KC_E,    KC_I,    KC_QUOT,
-        KC_LSFT, KC_X, KC_Q, KC_M,    KC_W,         KC_Z,   /* */  KC_K,    KC_F,         KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
-                             KC_TAB,  LT(3,KC_SPC), KC_LGUI, /* */ KC_LSFT, LT(4,KC_ENT), KC_BSPC
+        KC_ESC,  KC_B, KC_L, KC_D,  KC_C,   KC_V,   /* */  KC_J,    KC_Y,   KC_O,    KC_U,    KC_SCLN, KC_BSLS,
+        CW_TOGG, KC_N, KC_R, KC_T,  KC_S,   KC_G,   /* */  KC_P,    KC_H,   KC_A,    KC_E,    KC_I,    KC_QUOT,
+        KC_LSFT, KC_X, KC_Q, KC_M,  KC_W,   KC_Z,   /* */  KC_K,    KC_F,   KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
+                             MO(3), KC_SPC, KC_LGUI, /* */ KC_LSFT, KC_ENT, MO(4)
     ),
     /*
      * GAME (QWERTY)
@@ -69,18 +36,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [3] = LAYOUT_split_3x6_3(
         KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_AMPR, /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_COLN, KC_PIPE,
-        KC_TRNS, MY_GUI,     MY_CTL,     MY_SFT,     MY_ALT,     KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_EXLM, KC_DQUO,
+        KC_TRNS, OS_LGUI,    OS_LCTL,    OS_LSFT,    OS_LALT,    KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_EXLM, KC_DQUO,
         KC_TRNS, KC_NO,      KC_NO,      KC_AT,      KC_HASH,    KC_ASTR, /* */ KC_CIRC, KC_DLR,  KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
-                                         KC_TRNS,    KC_TRNS,    QK_BOOT, /* */ KC_TRNS, MO(5),   KC_TRNS
+                                         KC_TRNS,    KC_TRNS,    QK_BOOT, /* */ KC_TRNS, KC_TRNS, MO(5)
     ),
     /*
      * FUNC
      */
     [4] = LAYOUT_split_3x6_3(
-        KC_TRNS, KC_NO,  KC_NO,  LCTL(KC_D), KC_NO,   KC_NO,   /* */ KC_NO,   LCTL(KC_U), KC_NO, KC_NO,   KC_NO,  LCA(KC_DEL),
-        KC_TRNS, MY_GUI, MY_CTL, MY_SFT,     MY_ALT,  KC_HOME, /* */ KC_LEFT, KC_DOWN,    KC_UP, KC_RGHT, KC_END, KC_NO,
-        KC_TRNS, KC_NO,  KC_NO,  KC_NO,      MS_WHLU, MS_WHLD, /* */ MS_LEFT, MS_RGHT,    KC_NO, KC_NO,   KC_NO,  KC_NO,
-                                 KC_TRNS,    MO(5),   KC_TRNS, /* */ KC_TRNS, KC_TRNS,    KC_TRNS
+        KC_TRNS, KC_NO,   KC_NO,   LCTL(KC_D), KC_NO,   KC_NO,   /* */ KC_NO,   LCTL(KC_U), KC_NO, KC_NO,   KC_NO,  LCA(KC_DEL),
+        KC_TRNS, OS_LGUI, OS_LCTL, OS_LSFT,    OS_LALT, KC_HOME, /* */ KC_LEFT, KC_DOWN,    KC_UP, KC_RGHT, KC_END, KC_NO,
+        KC_TRNS, KC_NO,   KC_NO,   KC_NO,      MS_WHLU, MS_WHLD, /* */ MS_LEFT, MS_RGHT,    KC_NO, KC_NO,   KC_NO,  KC_NO,
+                                   MO(5),      KC_TRNS, KC_TRNS, /* */ KC_TRNS, KC_TRNS,    KC_TRNS
     ),
     /*
      * NUM
@@ -88,20 +55,62 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [5] = LAYOUT_split_3x6_3(
         KC_F1,   KC_F2, KC_F3, KC_F4,   KC_F5,   KC_F6,   /* */ KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
         KC_TRNS, KC_1,  KC_2,  KC_3,    KC_4,    KC_5,    /* */ KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
-        TO(2),   TO(1), KC_NO, KC_NO,   KC_NO,   KC_EQL,  /* */ KC_MINS, KC_PLUS, KC_COMM, KC_DOT,  KC_SLSH, TO(0),
+        TO(1),   TO(2), KC_NO, KC_NO,   KC_NO,   KC_EQL,  /* */ KC_MINS, KC_PLUS, KC_COMM, KC_DOT,  KC_SLSH, TO(0),
                                KC_TRNS, KC_TRNS, KC_TRNS, /* */ KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
 };
 
-const uint16_t PROGMEM combo1[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM combo2[] = {KC_E, KC_T, COMBO_END};
-const uint16_t PROGMEM combo3[] = {KC_SCLN, KC_BSLS, COMBO_END};
-const uint16_t PROGMEM combo4[] = {KC_L, KC_SCLN, COMBO_END};
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!record->event.pressed) {
+        // Also suppress release events for OS keys, since we handle
+        // everything via add_oneshot_mods() on press.
+        switch (keycode) {
+            case OS_LGUI:
+            case OS_LCTL:
+            case OS_LSFT:
+            case OS_LALT:
+                return false;
+        }
+        return true;
+    }
+
+    switch (keycode) {
+        case OS_LGUI:
+            add_oneshot_mods(MOD_LGUI);
+            return false;
+        case OS_LCTL:
+            add_oneshot_mods(MOD_LCTL);
+            return false;
+        case OS_LSFT:
+            add_oneshot_mods(MOD_LSFT);
+            return false;
+        case OS_LALT:
+            add_oneshot_mods(MOD_LALT);
+            return false;
+    }
+
+    return true;
+}
+
+const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {KC_E, KC_T, COMBO_END};
+const uint16_t PROGMEM combo_del[] = {KC_SCLN, KC_BSLS, COMBO_END};
+const uint16_t PROGMEM combo_bspc[] = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM combo_mins[] = {KC_Y, KC_N, COMBO_END};
+const uint16_t PROGMEM combo_unds[] = {KC_U, KC_R, COMBO_END};
+const uint16_t PROGMEM combo_eql[] = {KC_N, KC_I, COMBO_END};
+const uint16_t PROGMEM combo_plus[] = {KC_J, KC_U, COMBO_END};
+
+
 
 combo_t key_combos[] = {
-    COMBO(combo1, KC_ESC),
-    COMBO(combo2, KC_TAB),
-    COMBO(combo3, KC_DEL),
-    COMBO(combo4, KC_BSPC),
+    COMBO(combo_esc, KC_ESC),
+    COMBO(combo_tab, KC_TAB),
+    COMBO(combo_del, KC_DEL),
+    COMBO(combo_bspc, KC_BSPC),
+    COMBO(combo_mins, KC_MINS),
+    COMBO(combo_unds, KC_UNDS),
+    COMBO(combo_eql, KC_EQL),
+    COMBO(combo_plus, KC_PLUS),
 };
