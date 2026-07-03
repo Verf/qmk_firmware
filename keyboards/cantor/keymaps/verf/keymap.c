@@ -93,24 +93,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM combo_tab[] = {KC_E, KC_T, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {KC_SCLN, KC_BSLS, COMBO_END};
+
+const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_esc2[] = {KC_B, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {KC_E, KC_T, COMBO_END};
+const uint16_t PROGMEM combo_tab2[] = {KC_T, KC_S, COMBO_END};
 const uint16_t PROGMEM combo_bspc[] = {KC_L, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM combo_mins[] = {KC_Y, KC_N, COMBO_END};
-const uint16_t PROGMEM combo_unds[] = {KC_U, KC_R, COMBO_END};
-const uint16_t PROGMEM combo_eql[] = {KC_N, KC_I, COMBO_END};
+const uint16_t PROGMEM combo_bspc2[] = {KC_U, KC_SCLN, COMBO_END};
+
 const uint16_t PROGMEM combo_plus[] = {KC_J, KC_U, COMBO_END};
+const uint16_t PROGMEM combo_plus2[] = {KC_J, KC_Y, COMBO_END};
+const uint16_t PROGMEM combo_unds[] = {KC_U, KC_R, COMBO_END};
+const uint16_t PROGMEM combo_unds2[] = {KC_Y, KC_O, COMBO_END};
+const uint16_t PROGMEM combo_mins[] = {KC_Y, KC_N, COMBO_END};
+const uint16_t PROGMEM combo_mins2[] = {KC_P, KC_H, COMBO_END};
+const uint16_t PROGMEM combo_eql[] = {KC_N, KC_I, COMBO_END};
+const uint16_t PROGMEM combo_eql2[] = {KC_H, KC_A, COMBO_END};
 
 
 
 combo_t key_combos[] = {
-    COMBO(combo_esc, KC_ESC),
-    COMBO(combo_tab, KC_TAB),
     COMBO(combo_del, KC_DEL),
+
+    COMBO(combo_esc, KC_ESC),
+    COMBO(combo_esc2, KC_ESC),
+    COMBO(combo_tab, KC_TAB),
+    COMBO(combo_tab2, KC_TAB),
     COMBO(combo_bspc, KC_BSPC),
-    COMBO(combo_mins, KC_MINS),
-    COMBO(combo_unds, KC_UNDS),
-    COMBO(combo_eql, KC_EQL),
+    COMBO(combo_bspc2, KC_BSPC),
+
     COMBO(combo_plus, KC_PLUS),
+    COMBO(combo_plus2, KC_PLUS),
+    COMBO(combo_unds, KC_UNDS),
+    COMBO(combo_unds2, KC_UNDS),
+    COMBO(combo_mins, KC_MINS),
+    COMBO(combo_mins2, KC_MINS),
+    COMBO(combo_eql, KC_EQL),
+    COMBO(combo_eql2, KC_EQL),
 };
