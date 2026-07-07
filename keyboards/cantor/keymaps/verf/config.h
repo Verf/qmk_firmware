@@ -9,7 +9,7 @@
 
 #define CAPS_WORD_IDLE_TIMEOUT 0
 
-#define COMBO_TERM 50
+#define COMBO_TERM 30
 
 #define ONESHOT_TAP_TOGGLE 2
 #define ONESHOT_TIMEOUT 5000
