@@ -3,33 +3,41 @@
 
 #include QMK_KEYBOARD_H
 
+enum {
+    TD_CWTG,
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_CWTG] = ACTION_TAP_DANCE_DOUBLE(KC_LCTL, CW_TOGG),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * BASE (Norman)
      */
     [0] = LAYOUT_split_3x6_3(
-        KC_ESC,  KC_Q, KC_W, KC_D,  KC_F,   KC_K,   /* */  KC_J,    KC_U,   KC_R,    KC_L,   KC_SCLN, KC_BSLS,
-        CW_TOGG, KC_A, KC_S, KC_E,  KC_T,   KC_G,   /* */  KC_Y,    KC_N,   KC_I,    KC_O,   KC_H,    KC_QUOT,
-        KC_LSFT, KC_Z, KC_X, KC_C,  KC_V,   KC_B,   /* */  KC_P,    KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_GRV,
-                             MO(3), KC_SPC, KC_LCTL, /* */ KC_LALT, KC_ENT, MO(4)
+        KC_ESC,      KC_Q, KC_W, KC_D,  KC_F,   KC_K,    /* */ KC_J,    KC_U,   KC_R,    KC_L,   KC_SCLN, KC_BSLS,
+        TD(TD_CWTG), KC_A, KC_S, KC_E,  KC_T,   KC_G,    /* */ KC_Y,    KC_N,   KC_I,    KC_O,   KC_H,    KC_QUOT,
+        KC_LSFT,     KC_Z, KC_X, KC_C,  KC_V,   KC_B,    /* */ KC_P,    KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_GRV,
+                                 MO(3), KC_SPC, KC_LALT, /* */ KC_LGUI, KC_ENT, MO(4)
     ),
     /*
      * BASE (Gallium)
      */
     [1] = LAYOUT_split_3x6_3(
-        KC_ESC,  KC_B, KC_L, KC_D,  KC_C,   KC_V,   /* */  KC_J,    KC_Y,   KC_O,    KC_U,    KC_SCLN, KC_BSLS,
-        CW_TOGG, KC_N, KC_R, KC_T,  KC_S,   KC_G,   /* */  KC_P,    KC_H,   KC_A,    KC_E,    KC_I,    KC_QUOT,
-        KC_LSFT, KC_X, KC_Q, KC_M,  KC_W,   KC_Z,   /* */  KC_K,    KC_F,   KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
-                             MO(3), KC_SPC, KC_LCTL, /* */ KC_LALT, KC_ENT, MO(4)
+        KC_ESC,      KC_B, KC_L, KC_D,  KC_C,   KC_V,    /* */ KC_J,    KC_Y,   KC_O,    KC_U,   KC_SCLN, KC_BSLS,
+        TD(TD_CWTG), KC_N, KC_R, KC_T,  KC_S,   KC_G,    /* */ KC_P,    KC_H,   KC_A,    KC_E,   KC_I,    KC_QUOT,
+        KC_LSFT,     KC_X, KC_Q, KC_M,  KC_W,   KC_Z,    /* */ KC_K,    KC_F,   KC_COMM, KC_DOT, KC_SLSH, KC_GRV,
+                                 MO(3), KC_SPC, KC_LALT, /* */ KC_LGUI, KC_ENT, MO(4)
     ),
     /*
      * GAME (QWERTY)
      */
     [2] = LAYOUT_split_3x6_3(
-        KC_ESC,  KC_Q, KC_W, KC_E,   KC_R,   KC_T,    /* */ KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    KC_LBRC,
-        KC_LCTL, KC_A, KC_S, KC_D,   KC_F,   KC_G,    /* */ KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-        KC_LSFT, KC_Z, KC_X, KC_C,   KC_V,   KC_B,    /* */ KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, TO(0),
-                             KC_TAB, KC_SPC, KC_LCTL, /* */ KC_LALT, KC_ENT, KC_BSPC
+        KC_ESC,  KC_Q, KC_W, KC_E,   KC_R,   KC_T,    /* */ KC_Y,  KC_U,   KC_I,    KC_O,    KC_P,    KC_LBRC,
+        KC_LCTL, KC_A, KC_S, KC_D,   KC_F,   KC_G,    /* */ KC_H,  KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        KC_LSFT, KC_Z, KC_X, KC_C,   KC_V,   KC_B,    /* */ KC_N,  KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
+                             KC_TAB, KC_SPC, KC_LALT, /* */ TO(0), KC_ENT, KC_BSPC
     ),
     /*
      * SYM
