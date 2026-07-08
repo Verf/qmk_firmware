@@ -7,8 +7,24 @@ enum {
     TD_CWTG,
 };
 
+// 自定义 tap dance：单击/长按 = Left Ctrl，双击 = Caps Word
+void td_cwtg_finished(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        register_code16(KC_LCTL);
+    } else {
+        caps_word_toggle();  // 直接用函数调用，不走 register_code16
+    }
+}
+
+void td_cwtg_reset(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        wait_ms(TAP_CODE_DELAY);
+        unregister_code16(KC_LCTL);
+    }
+}
+
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_CWTG] = ACTION_TAP_DANCE_DOUBLE(KC_LCTL, CW_TOGG),
+    [TD_CWTG] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_cwtg_finished, td_cwtg_reset),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
