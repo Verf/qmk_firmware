@@ -122,7 +122,7 @@ const uint16_t PROGMEM combo_del[] = {KC_SCLN, KC_BSLS, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_tab[] = {KC_F, KC_T, COMBO_END};
 const uint16_t PROGMEM combo_bspc[] = {KC_L, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM combo_bspc2[] = {KC_K, KC_O, COMBO_END};
+const uint16_t PROGMEM combo_bspc2[] = {KC_K, KC_SCLN, COMBO_END};
 
 const uint16_t PROGMEM combo_plus[] = {KC_J, KC_U, COMBO_END};
 const uint16_t PROGMEM combo_plus2[] = {KC_Y, KC_H, COMBO_END};
