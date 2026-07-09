@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT_split_3x6_3(
         KC_ESC,      KC_Q, KC_W, KC_D,  KC_F,   KC_P,    /* */ KC_Y,    KC_U,   KC_J,    KC_K,   KC_SCLN, KC_BSLS,
-        TD(TD_CWTG), KC_A, KC_R, KC_S,  KC_T,   KC_G,    /* */ KC_H,    KC_N,   KC_E,    KC_O,   KC_I,    KC_QUOT,
+        TD(TD_CWTG), KC_A, KC_S, KC_R,  KC_T,   KC_G,    /* */ KC_H,    KC_N,   KC_E,    KC_O,   KC_I,    KC_QUOT,
         KC_LSFT,     KC_Z, KC_X, KC_C,  KC_V,   KC_B,    /* */ KC_L,    KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_GRV,
                                  MO(3), KC_SPC, KC_LALT, /* */ KC_LGUI, KC_ENT, MO(4)
     ),
@@ -120,21 +120,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM combo_del[] = {KC_SCLN, KC_BSLS, COMBO_END};
 
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM combo_tab[] = {KC_E, KC_T, COMBO_END};
-const uint16_t PROGMEM combo_tab2[] = {KC_F, KC_T, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {KC_F, KC_T, COMBO_END};
 const uint16_t PROGMEM combo_bspc[] = {KC_L, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM combo_bspc2[] = {KC_K, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM combo_bspc2[] = {KC_K, KC_O, COMBO_END};
 
 const uint16_t PROGMEM combo_plus[] = {KC_J, KC_U, COMBO_END};
-const uint16_t PROGMEM combo_plus2[] = {KC_Y, KC_U, COMBO_END};
+const uint16_t PROGMEM combo_plus2[] = {KC_Y, KC_H, COMBO_END};
 const uint16_t PROGMEM combo_unds[] = {KC_U, KC_R, COMBO_END};
-const uint16_t PROGMEM combo_unds2[] = {KC_U, KC_J, COMBO_END};
+const uint16_t PROGMEM combo_unds2[] = {KC_U, KC_N, COMBO_END};
 const uint16_t PROGMEM combo_mins[] = {KC_Y, KC_N, COMBO_END};
-const uint16_t PROGMEM combo_mins2[] = {KC_H, KC_N, COMBO_END};
+const uint16_t PROGMEM combo_mins2[] = {KC_H, KC_L, COMBO_END};
 const uint16_t PROGMEM combo_eql[] = {KC_N, KC_I, COMBO_END};
-const uint16_t PROGMEM combo_eql2[] = {KC_N, KC_E, COMBO_END};
-const uint16_t PROGMEM combo_coln[] = {KC_L, KC_O, COMBO_END};
-const uint16_t PROGMEM combo_coln2[] = {KC_K, KC_I, COMBO_END};
+const uint16_t PROGMEM combo_eql2[] = {KC_N, KC_M, COMBO_END};
 
 
 combo_t key_combos[] = {
@@ -142,7 +139,6 @@ combo_t key_combos[] = {
 
     COMBO(combo_esc, KC_ESC),
     COMBO(combo_tab, KC_TAB),
-    COMBO(combo_tab2, KC_TAB),
     COMBO(combo_bspc, KC_BSPC),
     COMBO(combo_bspc2, KC_BSPC),
 
@@ -154,6 +150,4 @@ combo_t key_combos[] = {
     COMBO(combo_mins2, KC_MINS),
     COMBO(combo_eql, KC_EQL),
     COMBO(combo_eql2, KC_EQL),
-    COMBO(combo_coln, KC_COLN),
-    COMBO(combo_coln2, KC_COLN),
 };
