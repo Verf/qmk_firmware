@@ -139,7 +139,7 @@ combo_t key_combos[] = {
     COMBO(combo_del, KC_DEL),
 
     COMBO(combo_esc, KC_ESC),
-    COMBO(combo_esc2, KC_TAB),
+    COMBO(combo_esc2, KC_ESC),
 
     COMBO(combo_bspc, KC_BSPC),
     COMBO(combo_bspc2, KC_BSPC),
