@@ -59,19 +59,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * SYM
      */
     [3] = LAYOUT_split_3x6_3(
-        KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_AMPR, /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_COLN, KC_PIPE,
-        KC_TRNS, OS_LGUI,    OS_LCTL,    OS_LSFT,    OS_LALT,    KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_EXLM, KC_DQUO,
-        KC_TRNS, KC_NO,      KC_NO,      KC_AT,      KC_HASH,    KC_ASTR, /* */ KC_CIRC, KC_DLR,  KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
-                                         KC_TRNS,    KC_TRNS,    QK_BOOT, /* */ KC_TRNS, KC_TRNS, MO(5)
+        LALT(KC_TAB), LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), KC_AMPR, /* */ KC_PLUS, KC_UNDS, KC_LBRC, KC_RBRC, KC_COLN, KC_PIPE,
+        LCTL(KC_TAB), OS_LGUI,    OS_LCTL,    OS_LSFT,    OS_LALT,    KC_PERC, /* */ KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_EXLM, KC_DQUO,
+        KC_TRNS,      KC_NO,      KC_NO,      KC_AT,      KC_HASH,    KC_ASTR, /* */ KC_CIRC, KC_DLR,  KC_LCBR, KC_RCBR, KC_QUES, KC_TILD,
+                                              KC_TRNS,    KC_TRNS,    QK_BOOT, /* */ KC_TRNS, KC_TRNS, MO(5)
     ),
     /*
      * FUNC
      */
     [4] = LAYOUT_split_3x6_3(
-        KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,        KC_NO,        /* */ KC_HOME, KC_PGUP, KC_PGDN, KC_END,  KC_NO,  LCA(KC_DEL),
-        KC_TRNS, OS_LGUI, OS_LCTL, OS_LSFT, OS_LALT,      KC_NO,        /* */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_END, KC_NO,
-        KC_TRNS, KC_NO,   KC_NO,   KC_NO,   MS_WHLU,      MS_WHLD,      /* */ MS_LEFT, MS_RGHT, KC_NO,   KC_NO,   KC_NO,  KC_NO,
-                                   MO(5),   LALT(KC_TAB), LCTL(KC_TAB), /* */ KC_TRNS, KC_TRNS, KC_TRNS
+        KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   /* */ KC_HOME, KC_PGUP, KC_PGDN, KC_END,  KC_NO,  LCA(KC_DEL),
+        KC_TRNS, OS_LGUI, OS_LCTL, OS_LSFT, OS_LALT, KC_NO,   /* */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_END, KC_NO,
+        KC_TRNS, KC_NO,   KC_NO,   KC_NO,   MS_WHLU, MS_WHLD, /* */ MS_LEFT, MS_RGHT, KC_NO,   KC_NO,   KC_NO,  KC_NO,
+                                   MO(5),   KC_TRNS, KC_TRNS, /* */ KC_TRNS, KC_TRNS, KC_TRNS
     ),
     /*
      * NUM
