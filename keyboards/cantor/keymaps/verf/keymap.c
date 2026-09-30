@@ -7,19 +7,23 @@ enum {
     TD_CWTG,
 };
 
-// 自定义 tap dance：单击/长按 = Left Ctrl，双击 = Caps Word
+// 自定义 tap dance：单击 = Tab，长按 = Left Ctrl，双击 = Caps Word
+static uint16_t td_cwtg_keycode = KC_NO;
+
 void td_cwtg_finished(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
-        register_code16(KC_LCTL);
+        td_cwtg_keycode = state->pressed ? KC_LCTL : KC_TAB;
+        register_code16(td_cwtg_keycode);
     } else {
         caps_word_toggle();  // 直接用函数调用，不走 register_code16
     }
 }
 
 void td_cwtg_reset(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
+    if (td_cwtg_keycode != KC_NO) {
         wait_ms(TAP_CODE_DELAY);
-        unregister_code16(KC_LCTL);
+        unregister_code16(td_cwtg_keycode);
+        td_cwtg_keycode = KC_NO;
     }
 }
 
@@ -99,13 +103,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-const uint16_t PROGMEM combo_tab[] = {KC_T, KC_S, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {KC_SCLN, KC_BSLS, COMBO_END};
 const uint16_t PROGMEM combo_bspc[] = {KC_U, KC_SCLN, COMBO_END};
 
 
 combo_t key_combos[] = {
-    COMBO(combo_tab, KC_TAB),
     COMBO(combo_del, KC_DEL),
     COMBO(combo_bspc, KC_BSPC),
 };
